@@ -1,4 +1,4 @@
-
+from collections.abc import Iterable
 def _odd_iter():
     n = 1
     while True:
