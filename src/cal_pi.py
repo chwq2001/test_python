@@ -19,17 +19,19 @@ class pi_cal:
         self.pi, self.n = self.pi + 6 / self.n ** 2, self.n + 1
         return self.pi**0.5,self.n
 
+if __name__ == '__main__':
+    x = next_pi()
+    for i in x:
+        print(i)
+        if 3.14-i[0] < 0:
+            break
 
-x = next_pi()
-for i in x:
-    print(i)
-    if 3.14-i[0] < 0:
-        break
+    input('then iterator...')
 
-input('then iterator...')
-
-y = pi_cal()
-for i in y:
-    print(i)
-    if 3.14-i[0] < 0:
-        break
+    y = pi_cal()
+    for i in y:
+        print(i)
+        if 3.14-i[0] < 0:
+            break
+else:
+    print('not in')
