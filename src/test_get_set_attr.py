@@ -15,6 +15,10 @@ class ClassA:
         #self.x  会引发RecursionError
         return super().__getattribute__(item)
 
+    def foo(self):
+        print('foo')
+
+
 a = ClassA()
 print(a.x)
 a.x='gsdgsdg'
@@ -26,3 +30,4 @@ print(getattr(a,'y'))
 print(a.z)
 print(getattr(a,'z'))
 setattr(a,'newv','ajjk')
+a.foo()

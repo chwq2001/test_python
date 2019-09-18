@@ -1,7 +1,6 @@
-def test(x, y, z=3, *books, **scores) :
-    print(x, y, z)
-    print(books)
-    print(scores)
-
-
-test(1, 2, 3, "C语言中文网" ,"Python教程", 语文=89, 数学=94)
+d=2
+g={'a':6, 'b':8,'__builtins__':None} #定义一个字典
+t={'b':100, 'c':10} #定义一个字典
+print(exec('d=2',g,t))
+print(g.items())
+print(t.items())
