@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor,as_completed
 import threading
 import time
 # 定义一个准备作为线程任务的函数
@@ -31,8 +31,9 @@ with ThreadPoolExecutor(max_workers=2) as pool:
     print(future2.done(),future2.running())
     if not test_callback:
         # 查看future1代表的任务返回的结果
-        print(future1.result())
-        # 查看future2代表的任务返回的结果       °
+
+        print(as_completed(future1))
+        # 查看future2代表的任务返回的结果
         print(future2.result())
     else:
         future1.add_done_callback(get_result)
@@ -42,19 +43,4 @@ with ThreadPoolExecutor(max_workers=2) as pool:
     # pool.shutdown()  #放在with块中会被自动调用
     print('done')
 
-# 创建一个包含4条线程的线程池
-def test_map(list):
-    with ThreadPoolExecutor(len(list)) as pool:
-        # 使用线程执行map计算
-        # 后面元组有3个元素，因此程序启动3条线程来执行action函数
-        results = pool.map(action, list)
-        return zip(list,results)
 
-def get_map_result(the_future):
-    for i,j in the_future.result():
-        print(f"{i}!={j}")
-with ThreadPoolExecutor(max_workers=1) as pool:
-    # 向线程池提交一个task, 50会作为action()函数的参数
-    future = pool.submit(test_map, (5,6,8))
-    future.add_done_callback(get_map_result)
-    print('done')
