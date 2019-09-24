@@ -13,7 +13,7 @@ async def download_one(url):
 
 
 async def download_all(sites):
-    tasks = [asyncio.create_task(download_one(site)) for site in sites] # from Python 3.7, support  create_task
+    tasks = [asyncio.create_task(download_one(site)) for site in sites] # from Python 3.7, support  create_task， 代替asyncio.ensure_future
     await asyncio.gather(*tasks)
 
 
