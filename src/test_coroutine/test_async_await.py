@@ -25,7 +25,7 @@ print("main")
 # loop.close()
 
 print("#"*100)
-loop1 = asyncio.get_event_loop()   # actually, this loop is loop above
+# loop1 = asyncio.get_event_loop()   # actually, this loop is loop above
 with contextlib.closing(asyncio.get_event_loop()) as loop1:
     tasks = (hello2(), hello2())
     loop1.run_until_complete(asyncio.wait(tasks))
