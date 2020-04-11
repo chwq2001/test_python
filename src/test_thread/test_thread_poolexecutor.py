@@ -18,7 +18,7 @@ def get_result(the_future):
     print('call back get_result: '+str(the_future.result()))
 
 
-test_callback = True
+test_callback = 1
 # 创建一个包含2条线程的线程池，同时他也是一个上下文管理器
 with ThreadPoolExecutor(max_workers=2) as pool:
     # 向线程池提交一个task, 50会作为action()函数的参数
@@ -31,7 +31,6 @@ with ThreadPoolExecutor(max_workers=2) as pool:
     print(future2.done(),future2.running())
     if not test_callback:
         # 查看future1代表的任务返回的结果
-
         print(as_completed(future1))
         # 查看future2代表的任务返回的结果
         print(future2.result())
